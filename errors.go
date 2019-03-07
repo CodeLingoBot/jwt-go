@@ -27,7 +27,7 @@ const (
 	ValidationErrorClaimsInvalid // Generic claims validation error
 )
 
-// Helper for constructing a ValidationError with a string error message
+// NewValidationError: Helper for constructing a ValidationError with a string error message
 func NewValidationError(errorText string, errorFlags uint32) *ValidationError {
 	return &ValidationError{
 		text:   errorText,
@@ -42,7 +42,7 @@ type ValidationError struct {
 	text   string // errors that do not have a valid error just have text
 }
 
-// Validation error is an error type
+// Error: Validation error is an error type
 func (e ValidationError) Error() string {
 	if e.Inner != nil {
 		return e.Inner.Error()

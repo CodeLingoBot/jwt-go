@@ -6,7 +6,7 @@ import (
 	"time"
 )
 
-// Example (atypical) using the StandardClaims type by itself to parse a token.
+// ExampleNewWithClaims_standardClaims: Example (atypical) using the StandardClaims type by itself to parse a token.
 // The StandardClaims type is designed to be embedded into your custom types
 // to provide standard validation features.  You can use it alone, but there's
 // no way to retrieve other fields after parsing.
@@ -26,7 +26,7 @@ func ExampleNewWithClaims_standardClaims() {
 	//Output: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1MDAwLCJpc3MiOiJ0ZXN0In0.QsODzZu3lUZMVdhbO76u3Jv02iYCvEHcYVUI1kOWEU0 <nil>
 }
 
-// Example creating a token using a custom claims type.  The StandardClaim is embedded
+// ExampleNewWithClaims_customClaimsType: Example creating a token using a custom claims type.  The StandardClaim is embedded
 // in the custom type to allow for easy encoding, parsing and validation of standard claims.
 func ExampleNewWithClaims_customClaimsType() {
 	mySigningKey := []byte("AllYourBase")
@@ -51,7 +51,7 @@ func ExampleNewWithClaims_customClaimsType() {
 	//Output: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmb28iOiJiYXIiLCJleHAiOjE1MDAwLCJpc3MiOiJ0ZXN0In0.HE7fK0xOQwFEr4WDgRWj4teRPZ6i3GLwD5YCm6Pwu_c <nil>
 }
 
-// Example creating a token using a custom claims type.  The StandardClaim is embedded
+// ExampleParseWithClaims_customClaimsType: Example creating a token using a custom claims type.  The StandardClaim is embedded
 // in the custom type to allow for easy encoding, parsing and validation of standard claims.
 func ExampleParseWithClaims_customClaimsType() {
 	tokenString := "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmb28iOiJiYXIiLCJleHAiOjE1MDAwLCJpc3MiOiJ0ZXN0In0.HE7fK0xOQwFEr4WDgRWj4teRPZ6i3GLwD5YCm6Pwu_c"
@@ -86,7 +86,7 @@ func at(t time.Time, f func()) {
 	jwt.TimeFunc = time.Now
 }
 
-// An example of parsing the error types using bitfield checks
+// ExampleParse_errorChecking: An example of parsing the error types using bitfield checks
 func ExampleParse_errorChecking() {
 	// Token from another example.  This token is expired
 	var tokenString = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmb28iOiJiYXIiLCJleHAiOjE1MDAwLCJpc3MiOiJ0ZXN0In0.HE7fK0xOQwFEr4WDgRWj4teRPZ6i3GLwD5YCm6Pwu_c"

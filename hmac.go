@@ -77,7 +77,7 @@ func (m *SigningMethodHMAC) Verify(signingString, signature string, key interfac
 	return nil
 }
 
-// Implements the Sign method from SigningMethod for this signing method.
+// Sign: Implements the Sign method from SigningMethod for this signing method.
 // Key must be []byte
 func (m *SigningMethodHMAC) Sign(signingString string, key interface{}) (string, error) {
 	if keyBytes, ok := key.([]byte); ok {

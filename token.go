@@ -29,7 +29,7 @@ type Token struct {
 	Valid     bool                   // Is the token valid?  Populated when you Parse/Verify a token
 }
 
-// Create a new Token.  Takes a signing method
+// New: Create a new Token.  Takes a signing method
 func New(method SigningMethod) *Token {
 	return NewWithClaims(method, MapClaims{})
 }
@@ -45,7 +45,7 @@ func NewWithClaims(method SigningMethod, claims Claims) *Token {
 	}
 }
 
-// Get the complete, signed token
+// SignedString gets the complete, signed token
 func (t *Token) SignedString(key interface{}) (string, error) {
 	var sig, sstr string
 	var err error
@@ -58,7 +58,7 @@ func (t *Token) SignedString(key interface{}) (string, error) {
 	return strings.Join([]string{sstr, sig}, "."), nil
 }
 
-// Generate the signing string.  This is the
+// SigningString: Generate the signing string.  This is the
 // most expensive part of the whole deal.  Unless you
 // need this for something special, just go straight for
 // the SignedString.
@@ -82,7 +82,7 @@ func (t *Token) SigningString() (string, error) {
 	return strings.Join(parts, "."), nil
 }
 
-// Parse, validate, and return a token.
+// Parse: Parse, validate, and return a token.
 // keyFunc will receive the parsed token and should return the key for validating.
 // If everything is kosher, err will be nil
 func Parse(tokenString string, keyFunc Keyfunc) (*Token, error) {
@@ -93,12 +93,12 @@ func ParseWithClaims(tokenString string, claims Claims, keyFunc Keyfunc) (*Token
 	return new(Parser).ParseWithClaims(tokenString, claims, keyFunc)
 }
 
-// Encode JWT specific base64url encoding with padding stripped
+// EncodeSegment: Encode JWT specific base64url encoding with padding stripped
 func EncodeSegment(seg []byte) string {
 	return strings.TrimRight(base64.URLEncoding.EncodeToString(seg), "=")
 }
 
-// Decode JWT specific base64url encoding with padding stripped
+// DecodeSegment decodes JWT specific base64url encoding with padding stripped
 func DecodeSegment(seg string) ([]byte, error) {
 	if l := len(seg) % 4; l > 0 {
 		seg += strings.Repeat("=", 4-l)

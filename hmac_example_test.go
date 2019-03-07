@@ -21,7 +21,7 @@ func init() {
 	}
 }
 
-// Example creating, signing, and encoding a JWT token using the HMAC signing method
+// ExampleNew_hmac: Example creating, signing, and encoding a JWT token using the HMAC signing method
 func ExampleNew_hmac() {
 	// Create a new token object, specifying signing method and the claims
 	// you would like it to contain.
@@ -37,7 +37,7 @@ func ExampleNew_hmac() {
 	// Output: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmb28iOiJiYXIiLCJuYmYiOjE0NDQ0Nzg0MDB9.u1riaD1rW97opCoAuRCTy4w58Br-Zk-bh7vLiRIsrpU <nil>
 }
 
-// Example parsing and validating a token using the HMAC signing method
+// ExampleParse_hmac: Example parsing and validating a token using the HMAC signing method
 func ExampleParse_hmac() {
 	// sample token string taken from the New example
 	tokenString := "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmb28iOiJiYXIiLCJuYmYiOjE0NDQ0Nzg0MDB9.u1riaD1rW97opCoAuRCTy4w58Br-Zk-bh7vLiRIsrpU"

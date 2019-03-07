@@ -13,7 +13,7 @@ type Parser struct {
 	SkipClaimsValidation bool     // Skip claims validation during token parsing
 }
 
-// Parse, validate, and return a token.
+// Parse: Parse, validate, and return a token.
 // keyFunc will receive the parsed token and should return the key for validating.
 // If everything is kosher, err will be nil
 func (p *Parser) Parse(tokenString string, keyFunc Keyfunc) (*Token, error) {

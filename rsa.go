@@ -44,7 +44,7 @@ func (m *SigningMethodRSA) Alg() string {
 	return m.Name
 }
 
-// Implements the Verify method from SigningMethod
+// Verify: Implements the Verify method from SigningMethod
 // For this signing method, must be an *rsa.PublicKey structure.
 func (m *SigningMethodRSA) Verify(signingString, signature string, key interface{}) error {
 	var err error
@@ -73,7 +73,7 @@ func (m *SigningMethodRSA) Verify(signingString, signature string, key interface
 	return rsa.VerifyPKCS1v15(rsaKey, m.Hash, hasher.Sum(nil), sig)
 }
 
-// Implements the Sign method from SigningMethod
+// Sign: Implements the Sign method from SigningMethod
 // For this signing method, must be an *rsa.PrivateKey structure.
 func (m *SigningMethodRSA) Sign(signingString string, key interface{}) (string, error) {
 	var rsaKey *rsa.PrivateKey
